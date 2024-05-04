@@ -1,22 +1,68 @@
-import logo from './logo.svg';
+import {useState, useEffect} from "react";
 import './App.css';
+import { Button, Equations } from './components';
+import equationsGenerator from "./tools/equationsGenerator";
 
 function App() {
+  const [formula, setFormula] = useState(null);
+  const [equations, setEquations]= useState(null);
+  const [showCorrections, setShowCorrections] = useState(false);
+
+  useEffect(() => {
+    let data = equationsGenerator(10, formula);
+    setEquations(data);
+  }, [formula]);
+
+  function handleFormulaClick(newFormula) {
+    setFormula(newFormula);
+    setShowCorrections(false)
+  }
+
+  // function
+
+  function renderEquations() {
+    // console.log(formula)
+    // console.log(equations)
+    if (!formula) return null;
+    return (
+      <>
+        <Equations data={equations} showCorrections={showCorrections} />
+        <Button type="submit" title={"soumettre tes réponses"}/>
+      </>
+    )
+  }
+
+  function handleSubmit(event){
+    event.preventDefault();
+    setShowCorrections(true);
+    let submitResults = event.target
+    for (let i=0; i < equations.length ;i++) {
+      console.log(submitResults[i].value)
+      equations[i].input = Number(submitResults[i].value)
+      console.log(equations[i])
+    }
+  }
+
   return (
     <div className="App">
+      {/* {console.log("in rendering")} */}
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>♥️ Exercices de Math pour Paul ♥️ </h1>
+        <h2>Choisis tes exercices de CE2</h2>
+        <div className="mat-config">
+          <nav>
+            <Button title={"Addition"} onClick={()=>handleFormulaClick("+")}/>
+            <Button title={"Soustraction"} onClick={()=>handleFormulaClick("-")}/>
+            <Button title={"Multiplication"} onClick={()=>handleFormulaClick("*")}/>
+            <Button title={"Division"} onClick={()=>handleFormulaClick("/")}/>
+            <Button title={"Mélangés"} onClick={()=>handleFormulaClick("mixed")}/>
+          </nav>
+        </div>
+        <div className="mat-equations">
+          <form autoComplete="off" onSubmit={handleSubmit}>
+            {renderEquations()}
+          </form>
+        </div>
       </header>
     </div>
   );

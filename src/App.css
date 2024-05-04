@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(4px + 2vmin);
   color: white;
 }
 
@@ -35,4 +35,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.formula-button {
+  padding: 10px;
+  font-size: 12px;
+  margin: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.equation-row {
+  margin:10px;
+}
+
+.answer-input.right::after {
+  content: "correct";
+  color: white;
+  background-color: red;
+  padding: 4px;
+}
+
+.answer-input.wrong::after {
+  content: "wrong"
 }
