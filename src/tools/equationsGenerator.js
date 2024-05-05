@@ -32,6 +32,7 @@ export default function equationsGenerator (quantity, calFormula) {
       case "/":
         answer = a;
         a = answer * b;
+        if (b ===0){ b += 1 };
         break
       default:
         console.log("missing formula")

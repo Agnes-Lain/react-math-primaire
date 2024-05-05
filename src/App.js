@@ -7,22 +7,25 @@ function App() {
   const [formula, setFormula] = useState(null);
   const [equations, setEquations]= useState(null);
   const [showCorrections, setShowCorrections] = useState(false);
+  const [hasInput, setHasInput] = useState(false)
 
   useEffect(() => {
+    setEquations(null)
     let data = equationsGenerator(10, formula);
     setEquations(data);
   }, [formula]);
 
   function handleFormulaClick(newFormula) {
     setFormula(newFormula);
-    setShowCorrections(false)
+    setShowCorrections(false);
+    if (hasInput){
+      // console.log(document.getElementById("form"))
+      document.getElementById("form").reset();
+      setHasInput(false);
+    }
   }
 
-  // function
-
   function renderEquations() {
-    // console.log(formula)
-    // console.log(equations)
     if (!formula) return null;
     return (
       <>
@@ -33,13 +36,14 @@ function App() {
   }
 
   function handleSubmit(event){
+    if (event) {setHasInput(true)}
     event.preventDefault();
     setShowCorrections(true);
     let submitResults = event.target
     for (let i=0; i < equations.length ;i++) {
-      console.log(submitResults[i].value)
+      // console.log(submitResults[i].value)
       equations[i].input = Number(submitResults[i].value)
-      console.log(equations[i])
+      // console.log(equations[i])
     }
   }
 
@@ -59,7 +63,7 @@ function App() {
           </nav>
         </div>
         <div className="mat-equations">
-          <form autoComplete="off" onSubmit={handleSubmit}>
+          <form id="form" autoComplete="off" onSubmit={handleSubmit}>
             {renderEquations()}
           </form>
         </div>

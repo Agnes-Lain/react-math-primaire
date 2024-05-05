@@ -1,6 +1,4 @@
 import EquationRow from "./EquationRow";
-import Button from "./Button"
-import {useState} from "react"
 
 
 export default function Equations({data, showCorrections}) {
