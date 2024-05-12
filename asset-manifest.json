@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-math-primaire/static/css/main.a87081b0.css",
-    "main.js": "/react-math-primaire/static/js/main.f7ad101e.js",
+    "main.js": "/react-math-primaire/static/js/main.df0d7195.js",
     "static/js/453.31268adc.chunk.js": "/react-math-primaire/static/js/453.31268adc.chunk.js",
     "index.html": "/react-math-primaire/index.html",
     "main.a87081b0.css.map": "/react-math-primaire/static/css/main.a87081b0.css.map",
-    "main.f7ad101e.js.map": "/react-math-primaire/static/js/main.f7ad101e.js.map",
+    "main.df0d7195.js.map": "/react-math-primaire/static/js/main.df0d7195.js.map",
     "453.31268adc.chunk.js.map": "/react-math-primaire/static/js/453.31268adc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a87081b0.css",
-    "static/js/main.f7ad101e.js"
+    "static/js/main.df0d7195.js"
   ]
 }
