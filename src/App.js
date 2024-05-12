@@ -54,7 +54,7 @@ function App() {
       {/* {console.log("in rendering")} */}
       <header className="App-header">
         <h1>♥️ Exercices de Math pour Paul ♥️ </h1>
-        <h2>Choisis tes exercices de CE2</h2>
+        <h3>Choisis tes exercices de CE2</h3>
         <div className="mat-config">
           <nav>
             <Button title={"Addition"} onClick={()=>handleFormulaClick("+")}/>

@@ -49,13 +49,17 @@
   margin:10px;
 }
 
-.answer-input.right::after {
+#form {
+  font-size: 22px;
+}
+
+/* .answer-input.right::after {
   content: "correct";
   color: white;
   background-color: red;
   padding: 4px;
-}
+} */
 
-.answer-input.wrong::after {
+/* .answer-input.wrong::after {
   content: "wrong"
-}
+} */
