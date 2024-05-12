@@ -42,7 +42,7 @@ export default function equationsGenerator (quantity, calFormula) {
     equation["b"] = b;
     equation["formula"] = formula;
     equation["answer"] = answer;
-    equation["input"] = null;
+    // equation["input"] = null;
     equation["index"] = i
     data.push(equation)
   }

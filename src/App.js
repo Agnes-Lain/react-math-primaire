@@ -8,6 +8,7 @@ function App() {
   const [equations, setEquations]= useState(null);
   const [showCorrections, setShowCorrections] = useState(false);
   const [hasInput, setHasInput] = useState(false)
+  const [answers, setAnswers] = useState(new Array(10).fill(null))
 
   useEffect(() => {
     setEquations(null)
@@ -19,7 +20,6 @@ function App() {
     setFormula(newFormula);
     setShowCorrections(false);
     if (hasInput){
-      // console.log(document.getElementById("form"))
       document.getElementById("form").reset();
       setHasInput(false);
     }
@@ -29,7 +29,7 @@ function App() {
     if (!formula) return null;
     return (
       <>
-        <Equations data={equations} showCorrections={showCorrections} />
+        <Equations data={equations} showCorrections={showCorrections} answers={answers} />
         <Button type="submit" title={"soumettre tes réponses"}/>
       </>
     )
@@ -40,11 +40,13 @@ function App() {
     event.preventDefault();
     setShowCorrections(true);
     let submitResults = event.target
+    let check_answers = []
     for (let i=0; i < equations.length ;i++) {
       // console.log(submitResults[i].value)
-      equations[i].input = Number(submitResults[i].value)
+      check_answers.push(equations[i].answer === Number(submitResults[i].value))
       // console.log(equations[i])
     }
+    setAnswers(check_answers)
   }
 
   return (

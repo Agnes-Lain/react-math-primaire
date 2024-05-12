@@ -1,14 +1,13 @@
 import Icon from "./Icon"
 
 
-export default function EquationRow ({equationData, showCorrections}) {
+export default function EquationRow ({equationData, showCorrections, answer}) {
 
   function renderIcon () {
-    let result = equationData.answer === equationData.input ? true : false
     if (showCorrections){
       return(
         <>
-          <Icon isCorrect={result}/>
+          <Icon isCorrect={answer}/>
         </>
       )
     } else {
