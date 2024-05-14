@@ -4,20 +4,25 @@ import { Button, Equations } from './components';
 import equationsGenerator from "./tools/equationsGenerator";
 
 function App() {
-  const [formula, setFormula] = useState(null);
+  const [formula, setFormula] = useState({
+    formula: null,
+  });
   const [equations, setEquations]= useState(null);
   const [showCorrections, setShowCorrections] = useState(false);
   const [hasInput, setHasInput] = useState(false)
   const [answers, setAnswers] = useState(new Array(10).fill(null))
 
   useEffect(() => {
-    setEquations(null)
-    let data = equationsGenerator(10, formula);
+    // setEquations(null)
+    let data = equationsGenerator(10, formula.formula);
     setEquations(data);
   }, [formula]);
 
   function handleFormulaClick(newFormula) {
-    setFormula(newFormula);
+    // if (formula) {setFormula((prev)=> prev = null)}
+    setFormula({
+      formula: newFormula
+    });
     setShowCorrections(false);
     if (hasInput){
       document.getElementById("form").reset();
@@ -26,7 +31,7 @@ function App() {
   }
 
   function renderEquations() {
-    if (!formula) return null;
+    if (!formula.formula) return null;
     return (
       <>
         <Equations data={equations} showCorrections={showCorrections} answers={answers} />
